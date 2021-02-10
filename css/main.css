@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.p1{
+    position: absolute;
+    left: 200px;
+    font-size: 7em;
+    opacity: 0;
+}
+
+.p2{
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    font-size: 7em; 
+    opacity: 0;
+}
+
+.p3{
+    position: absolute;
+    top: 250px;
+    left: 450px;
+    font-size: 7em; 
+    opacity: 0;
+    display: inline-block;
+}
+
+.p4{
+    position: absolute;
+    top: 55%;
+    right: 200px;
+    font-size: 7em;  
+    opacity: 0; 
+}
+
+.p5{
+    position: absolute;
+    top: 250px;
+    left: 850px;
+    font-size: 7em;  
+    opacity: 0;
+    display: inline-block;
+    
+}
