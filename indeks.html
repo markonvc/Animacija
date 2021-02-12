@@ -66,7 +66,7 @@
         const plane = new THREE.Mesh(geometry, material)
         plane.position.x = 2.7
         plane.position.y = 4;
-        plane.scale.y = 0.0001;
+        plane.scale.y =  0.0001;
         scene.add( plane );
 
         setTimeout(
@@ -124,50 +124,52 @@
             Math.PI * (1 - uvGeo2.y),
             Math.PI * (uvGeo2.x - 0.5) * 2
         )
-        fullSphereFormation.push(t2.x, t2.y, t2.z);
+        fullSphereFormation.push(t2.x, t2.y, 0);
         }
         geometry2.morphAttributes.position[0] = new THREE.Float32BufferAttribute(fullSphereFormation, 3);
 
         var fullSpherePlane = new THREE.Mesh(geometry2, material2);
         fullSpherePlane.position.x = 2.2;
         fullSpherePlane.position.y = 1.7;
-        fullSpherePlane.scale.y = 0.0001;
+        fullSpherePlane.scale.y =  0.0001;
         scene.add(fullSpherePlane);
         fullSpherePlane.morphTargetInfluences[0] = 0;
-        console.log(fullSpherePlane)
 
 
         let textureLoader3 = new THREE.TextureLoader();
         let item3Image1 =  textureLoader3.load('slikeZaAnimaciju/item3Picture1.jpg');
         let item3Image2 = textureLoader3.load('slikeZaAnimaciju/item3Picture2.jpg'); 
         let item3Image3 = textureLoader3.load('slikeZaAnimaciju/item3Picture3.jpg');
-        let geometry3 = new THREE.PlaneGeometry(1.5, 1.5);
+        let geometry3 = new THREE.PlaneGeometry(1.5, 1.5, 1.5);
         geometry3.translate( + 1/2, + 1/2, 0);
-        setTimeout(
-            function(){
-                geometry3.translate( 0, - 1/2, 0);
-                geometry3.translate( 0, - 1/2, 0);
-                plane3.position.y = 1.5;
-            }, 1500
-        )
-
-        setTimeout(
-            function(){
-                geometry3.translate( -1/2, - 1/2, 0);
-                geometry3.translate( -1/2, - 1/2, 0);
-                plane3.position.y = 4;
-                plane3.position.x = -3.6;
-            }, 3800
-        )
-
+        
 
         let material3 = new THREE.MeshBasicMaterial({color: "#ff0000"});/*map: item3Image1 */
         const plane3 = new THREE.Mesh(geometry3, material3)
         plane3.position.x = -2.5;
-        plane3.position.y = -0.6;
-        plane3.scale.y = 0.0001;
+        plane3.position.y = -0.1;
+        plane3.scale.y =  0.0001;
+        
         scene.add( plane3 );
-        console.log(plane3)
+
+        // setTimeout(
+        //     function(){
+        //         geometry3.translate( 0, - 1/2, 0);
+        //         geometry3.translate( 0, - 1/2, 0);
+        //     }, 1500
+        // )
+
+
+        // setTimeout(
+        //     function(){
+        //         geometry3.translate( -1/2, - 1/2, 0);
+        //         geometry3.translate( -1/2, - 1/2, 0);
+        //         plane3.position.y = 4;
+        //         plane3.position.x = -3;
+        //     }, 4000
+        // )
+
+
         setTimeout(
             function(){
                 material3.map = item3Image2;
@@ -179,7 +181,7 @@
             function(){
                 material3.map = item3Image3;
                 item3Image2.dispose();
-            }, 3500
+            }, 3800
         )
 
 
@@ -193,7 +195,7 @@
         const plane4 = new THREE.Mesh(geometry4, material4)
         plane4.position.x = -7.9;
         plane4.position.y = -1;
-        plane4.scale.x = 0.0001;
+        plane4.scale.x =  0.0001;
         scene.add( plane4 );
           setTimeout(
             function(){
@@ -215,29 +217,14 @@
         let item5Image2 = textureLoader5.load('slikeZaAnimaciju/item5Picture2.jpg');
         let item5Image3 = textureLoader5.load('slikeZaAnimaciju/item5Picture3.jpg');  
         let geometry5 = new THREE.PlaneGeometry(1.5, 1.5);
-        geometry5.translate( - 1/2, 0, 0);
-        setTimeout(
-            function(){
-                geometry5.translate( + 1/2, 0, 0);
-                geometry5.translate( + 1/2, 0, 0);
-                plane5.position.x = -0.7;
-            }, 1500
-        )
-
-        setTimeout(
-            function(){
-                geometry5.translate( - 1/2, 0, 0);
-                geometry5.translate( - 1/2, 0, 0);
-                plane5.position.x = -3.6;
-            }, 3800
-        )
+        geometry5.translate(-1/2, 0, 0);
 
 
         let material5 = new THREE.MeshBasicMaterial({color: "#ff0000"/*map: item5Image1*/ });
         const plane5 = new THREE.Mesh(geometry5, material5);
         plane5.position.x = 1.4;
         plane5.position.y = -2.5;
-        plane5.scale.x = 0.0001;
+        plane5.scale.x =  0.0001;
         scene.add( plane5 );
           setTimeout(
             function(){
@@ -290,20 +277,19 @@
         for (let i = 0; i < uvsGeo6.count; i++) {
             uvGeo6.fromBufferAttribute(uvsGeo6, i);
             t6.setFromSphericalCoords(
-                1.5,
-                Math.PI * (1 - uvGeo6.y),
+                1.3,
+                Math.PI * (0.5 - uvGeo6.y),
                 Math.PI * (uvGeo6.x - 0.5) 
                 )
-            halfSphereFormation.push(t6.x, t6.y, t6.z);
+            halfSphereFormation.push(t6.x, t6.y, 0);
         }
 
         geometry6.morphAttributes.position[0] = new THREE.Float32BufferAttribute(halfSphereFormation, 3);
-        console.log(geometry6.morphAttributes.position[0]);
 
         var halfSpherePlane = new THREE.Mesh(geometry6, material6);
         halfSpherePlane.position.x = 3.3;
         halfSpherePlane.position.y = -0.2;
-        halfSpherePlane.scale.x = 0.00001;
+        halfSpherePlane.scale.x =  0.0001;
         scene.add(halfSpherePlane);
         
         halfSpherePlane.morphTargetInfluences[0] = 0;
@@ -316,36 +302,72 @@
         let geometry8 = new THREE.PlaneGeometry(1.5, 1.5);
         geometry8.translate( - 1/2, - 1/2   , 0);
 
-        setTimeout(
-            function(){
-                geometry8.translate( - 1/2, + 1/2, 0);
-                geometry8.translate( - 1/2, + 1/2, 0);
-                plane8.position.y = -1.5
-                plane8.position.x = 5;
-            }, 3800
-        )
 
 
         let material8 = new THREE.MeshBasicMaterial({color: "#ff0000" /*map: item6Image1 */});
         const plane8 = new THREE.Mesh(geometry8, material8)
         plane8.position.x = 5.5;
         plane8.position.y = -2.7;
-        plane8.scale.x = 0.0001;
+        plane8.scale.x =  0.0001;
         scene.add( plane8 );
-          setTimeout(
+        //   setTimeout(
+        //     function(){
+        //         material8.map = item8Image2;
+        //         item8Image1.dispose();
+        //     }, 2000
+        // )
+
+        // setTimeout(
+        //     function(){
+        //         material8.map = item8Image3;
+        //         item8Image2.dispose();
+        //     }, 3500
+        // )
+
+
+        let textureLoaderBack = new THREE.TextureLoader();
+        let imageStart =  textureLoader8.load('slikeZaAnimaciju/item8Picture1.jpg');
+        let imageMidle = textureLoader8.load('slikeZaAnimaciju/item8Picture2.jpg'); 
+        let imageEnd = textureLoader8.load('slikeZaAnimaciju/item8Picture3.jpg');
+        let geometryBackground = new THREE.PlaneGeometry(16, 7.7); 
+        let materialBackground = new THREE.MeshBasicMaterial({map: item6Image1});
+        const backgroundPictures = new THREE.Mesh(geometryBackground , materialBackground)
+
+        setTimeout(
             function(){
-                material8.map = item8Image2;
-                item8Image1.dispose();
+                materialBackground.map = imageMidle;
+                imageStart.dispose();
             }, 2000
         )
 
         setTimeout(
             function(){
-                material8.map = item8Image3;
-                item8Image2.dispose();
+                materialBackground.map= imageEnd;
+                imageMidle.dispose();
             }, 3500
         )
 
+        
+        let geoBackgroundWhite = new THREE.PlaneGeometry(16, 7.7); 
+        let materialBackgroundWhite = new THREE.MeshBasicMaterial({color: "#fbf9f9"});
+        const backgroundWhite = new THREE.Mesh(geoBackgroundWhite , materialBackgroundWhite)
+
+        setTimeout(
+            function(){
+                materialBackground.map = imageMidle;
+                imageStart.dispose();
+            }, 2000
+        )
+
+        setTimeout(
+            function(){
+                materialBackground.map= imageEnd;
+                imageMidle.dispose();
+            }, 3500
+        )
+
+        scene.add(backgroundPictures);
+        scene.add(backgroundWhite);
         
 
         renderer.setAnimationLoop(() => {
@@ -360,68 +382,6 @@
             },4650
         )});
 
-         
-
-
-
-        // function timeFunction() {
-        //     setTimeout(function(){ const geometry7 = new THREE.CircleGeometry( 1, 32, 4.73, Math.PI);
-        //     let textureLoader7 = new THREE.TextureLoader();  
-        //     let item7Image1 =  textureLoader7.load('slikeZaAnimaciju/item7Picture1.jpg');
-        //     let item7Image2 =  textureLoader7.load('slikeZaAnimaciju/item7Picture2.jpg')
-        //     const material7 = new THREE.MeshBasicMaterial( {map: item7Image1 } );
-        //     const circle = new THREE.Mesh( geometry7, material7 );
-        //     scene.add( circle );
-        //     setTimeout(
-        //         function(){
-        //             material7.map = item7Image2;
-        //             item7Image1.dispose();
-        //         }, 1000
-        //     ) 
-        //     circle.position.x = 6;
-        //     circle.position.y = 1; 
-        //     let tl7 = new TimelineMax().delay(.30);
-        //     tl7.to(circle.position, 2.5, {x: 3, ease: Expo.easeOut},'+=1');
-        //     tl7.to(circle.position, 2.5, {x: 2, ease: Expo.easeOut});
-        //  }, 5500);
-            
-        // }
-
-        // timeFunction();
-
-        // function timeFunctionC() {
-        //     setTimeout(function(){ const geometry9 = new THREE.CircleGeometry( 1, 32,);
-        //     let textureLoader9 = new THREE.TextureLoader();  
-        //     let item9Image1 =  textureLoader9.load('slikeZaAnimaciju/item9Picture1.jpg'); 
-        //     let item9Image2 =  textureLoader9.load('slikeZaAnimaciju/item9Picture2.jpg');   
-        //     let item9Image3 =  textureLoader9.load('slikeZaAnimaciju/item9Picture3.jpg'); 
-        //     const material9 = new THREE.MeshBasicMaterial( { map: item9Image1 } );
-        //     const circle2 = new THREE.Mesh( geometry9, material9 );
-        //     scene.add( circle2 );
-        //     setTimeout(
-        //         function(){
-        //             material9.map = item9Image2;
-        //             item9Image1.dispose();
-        //         }, 1000
-        //     ) 
-
-        //     setTimeout(
-        //         function(){
-        //             material9.map = item9Image3;
-        //             item9Image2.dispose();
-        //         }, 3000
-        //     ) 
-        //     circle2.position.x = 1;
-        //     circle2.position.y = -1;
-        //     let tl8 = new TimelineMax().delay(.30);
-        //     tl8.to(circle2.position, 2.5, {x: -1, ease: Expo.easeOut}, '+=1');
-        //     tl8.to(circle2.position, 2, {x: -2, ease: Expo.easeOut});
-        //  }, 5500);
-            
-              
-        // }
-
-        // timeFunctionC();
        
         let light = new THREE.PointLight(0xFFFFFF, 1, 500)
         light.position.set(10,0,25);
@@ -432,11 +392,11 @@
             renderer.render(scene, camera);
         }
 
-        setTimeout(
-            function(){
-                document.getElementById('p1').style.opacity = '1';
-            }, 5500
-        ); 
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p1').style.opacity = '1';
+        //     }, 5500
+        // ); 
 
         // setTimeout(
         //     function(){
@@ -450,77 +410,77 @@
         //     },10000
         // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p2').style.opacity = '1';
-            }, 5500
-        ); 
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p2').style.opacity = '1';
+        //     }, 5500
+        // ); 
 
-        setTimeout(
-            function(){
-                document.getElementById('p2').style.left = '250px';
-            }, 6900
-        ); 
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p2').style.left = '250px';
+        //     }, 6900
+        // ); 
 
-        setTimeout(
-            function(){
-                document.getElementById('p2').style.left = '200px';
-            }, 10000
-        ); 
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p2').style.left = '200px';
+        //     }, 10000
+        // ); 
 
-        setTimeout(
-            function(){
-                document.getElementById('p3').style.opacity = '1';
-            }, 5500
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p3').style.opacity = '1';
+        //     }, 5500
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p3').style.left = '600px';
-            }, 6900
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p3').style.left = '600px';
+        //     }, 6900
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p3').style.left = '550px';
-            }, 10000
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p3').style.left = '550px';
+        //     }, 10000
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p5').style.opacity = '1';
-            }, 5500
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p5').style.opacity = '1';
+        //     }, 5500
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p5').style.left = '800px';
-            }, 6900
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p5').style.left = '800px';
+        //     }, 6900
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p5').style.left = '750px';
-            }, 10000
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p5').style.left = '750px';
+        //     }, 10000
+        // );
         
-        setTimeout(
-            function(){
-                document.getElementById('p4').style.opacity = '1';
-            }, 5500
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p4').style.opacity = '1';
+        //     }, 5500
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p4').style.right = '400px';
-            }, 6900
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p4').style.right = '400px';
+        //     }, 6900
+        // );
 
-        setTimeout(
-            function(){
-                document.getElementById('p4').style.right = '700px';
-            }, 10000
-        );
+        // setTimeout(
+        //     function(){
+        //         document.getElementById('p4').style.right = '700px';
+        //     }, 10000
+        // );
             
 
         render();
@@ -529,9 +489,10 @@
         let tl = new TimelineMax().delay(.3);
         tl.to(plane.scale, 1, {y: 1.2,  ease: Expo.easeInOut});
         tl.to(fullSpherePlane.scale, 1, {y: 1, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane3.scale, 1, {y: 1.9, ease: Expo.easeInOut}, "-=1");
         tl.to(plane3.position, 1, {y: -0.5}, "-=1");
-        tl.to(plane3.scale, 1, {y: 2, ease: Expo.easeInOut}, "-=1");
         tl.to(plane4.scale, 1, {x: 1.2, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane5.position, 1, {x: 1.3, ease: Expo.easeInOut}, "-=1");
         tl.to(plane5.scale, 1, {x: 2.1, ease: Expo.easeInOut}, "-=1");
         tl.to(halfSpherePlane.scale, 1, {x: 1, ease: Expo.easeInOut},"-=1");
         tl.to(plane8.scale, 1, {x: 1, ease: Expo.easeInOut}, "-=1");
@@ -542,11 +503,11 @@
         tl.to(fullSpherePlane.position, 1.1, {y: 0, ease: Expo.easeInOut}, "-=1");
         tl.to(fullSpherePlane.scale, 1, {y: 1.4, ease: Expo.easeOutIn}, "-=0.8");
         tl.to(fullSpherePlane.scale, 1, {y: 1, ease: Expo.easeOutIn}, "-=0.8");
-        tl.to(plane3.position, 1, {y: 3, ease: Expo.easeInOut}, "-=1.47");
-        tl.to(plane3.scale, 0.3, {y: 1}, "-=1"); 
+        tl.to(plane3.position, 1.1, {y: 2, ease: Expo.easeInOut}, "-=1.47");
+        tl.to(plane3.scale, 0.5, {y: 1}, "-=1"); 
         tl.to(plane4.scale, 1.6, {x: -1, ease: Expo.easeInOut}, "-=1.8" );
         tl.to(plane4.position, 1.6, {x: -5, ease: Expo.easeInOut}, "-=1.8");
-        tl.to(plane5.position, 1.1, {x: -2.5, ease: Expo.easeInOut}, "-=1.5");
+        tl.to(plane5.position, 1.1, {x: -1.7, ease: Expo.easeInOut}, "-=1.5");
         tl.to(plane5.scale, 0.4, {x: 1}, "-=1");
         tl.to(halfSpherePlane.position, 1.1, {x: 5.5, ease: Expo.easeInOut}, "-=1.5");
         tl.to(plane8.position, 1.1, {x: 4, ease: Expo.easeInOut}, "-=1.5");
@@ -560,39 +521,33 @@
         tl.to(plane4.position, 1, {y: 0.6, ease: Expo.easeInOut}, "-=0.97");
         tl.to(plane4.scale, 1, {y: 1.3, ease: Expo.easeOut}, "-=0.8");
         tl.to(plane4.scale, 1, {y: 1, ease: Expo.easeOut}, "-=0.59");
-        tl.to(plane5.position, .5, {x: -2.6, ease: Expo.easeInOut}, "-=1.5");
-        tl.to(plane5.scale, 1, {x: -1, ease: Expo.easeInOut}, "-=1.68");
+        tl.to(plane5.rotation, 0, {z: -3.145}, "-=1.5");
+        tl.to(plane5.position, 0, {x: -2.7 }, "-=1.5");
+        tl.to(plane5.scale, 1, {x: -1, ease: Expo.easeInOut}, "-=1.7");
         tl.to(halfSpherePlane.position, 1, {y: 1.3, ease: Expo.easeInOut}, "-=1.6");
         tl.to(halfSpherePlane.scale, 1, {y: 1.3, ease: Expo.easeOut}, "-=1.28");
-        tl.to(halfSpherePlane.scale, 1, {y: 1, ease: Expo.easeOut}, "-=0.9");
+        tl.to(halfSpherePlane.scale, 0.9, {y: 1, ease: Expo.easeOut}, "-=0.9");
         tl.to(plane8.position, .5, {y: -2.5, ease: Expo.easeInOut}, "-=1.5");
         tl.to(plane8.scale, 1, {y: -1, ease: Expo.easeInOut}, "-=1.8");
 
 
-        tl.to(fullSpherePlane.position, 1, {y: -1.3, ease: Expo.easeInOut}, "-=0.5");
+        tl.to(fullSpherePlane.position, 1, {y: -1.4, ease: Expo.easeInOut}, "-=0.5");
         tl.to(fullSpherePlane.rotation, 1, {y: 0.8, ease: Expo.easeInOut}, "-=1");
-        tl.to(fullSpherePlane.rotation, 1, {z: -0.3, ease: Expo.easeInOut}, "-=1");
-        tl.to(fullSpherePlane.rotation, 1, {x: 0.2, ease: Expo.easeInOut}, "-=1");
-        tl.to(fullSpherePlane.rotation, 1, {y: 0.2, ease: Expo.easeInOut}, "-=1");
-        tl.to(fullSpherePlane.rotation, 1, {x: -0.2, ease: Expo.easeInOut}, "-=1");
         tl.to(fullSpherePlane.scale, 1, {x: 1, ease: Expo.easeInOut}, "-=1");
+        tl.to(fullSpherePlane.rotation, 1, {y: 0, ease: Expo.easeInOut}, "-=1");
         tl.to(fullSpherePlane.position, 1, {x: 0, ease: Expo.easeInOut}, "-=1.3");
         tl.to(plane3.scale, 1, {x: 0, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane3.position, 1, {x: -4, ease: Expo.easeInOut}, "-=1");
         tl.to(plane4.position, 1, {x: -5.6, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane5.position, 0, {x: -3.7 }, "-=1");
+        tl.to(plane5.rotation, 0, {z: -0.001}, "-=1");
         tl.to(plane5.scale, 1, {x: 0, ease: Expo.easeInOut}, "-=1");
         tl.to(halfSpherePlane.position, 1, {y: -0.6, ease: Expo.easeInOut}, "-=1.2");
-        tl.to(halfSpherePlane.position, 1, {x: 4.79, ease: Expo.easeInOut}, "-=1");
-        tl.to(halfSpherePlane.rotation, 1, {x: 0.7, ease: Expo.easeInOut},"-=1" );
-        tl.to(halfSpherePlane.rotation, 1, {x: 1.6, ease: Expo.easeInOut}, "-=1");
-        tl.to(halfSpherePlane.rotation, 1, {x: 1.5, ease: Expo.easeInOut}, "-=1");
-        tl.to(halfSpherePlane.rotation, 1, {x: 0.5, ease: Expo.easeInOut}, "-=1");
-        tl.to(halfSpherePlane.rotation, 1, {x: -0.2, ease: Expo.easeInOut},"-=1" );
-        tl.to(halfSpherePlane.rotation, 1, {z: -0.5, ease: Expo.easeInOut},"-=1" );
-        tl.to(halfSpherePlane.rotation, 1, {y: 0.5, ease: Expo.easeInOut}, "-=1");
-        tl.to(halfSpherePlane.rotation, 1, {x: 0, ease: Expo.easeInOut},"-=1" );
-        tl.to(halfSpherePlane.rotation, 1, {y: 0.7, ease: Expo.easeInOut},"-=1" );    
-        tl.to(halfSpherePlane.rotation, 1, {x: 0, ease: Expo.easeInOut},"-=1" ); 
-        tl.to(halfSpherePlane.rotation, 1, {z: 0.3, ease: Expo.easeInOut},"-=1" );
+        tl.to(halfSpherePlane.position, 1, {x: 6.3, ease: Expo.easeInOut}, "-=1");
+        tl.to(halfSpherePlane.rotation, 1, {z: -1.561, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane8.position, 0, {x: 3, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane8.position, 0, {y: -1.5, ease: Expo.easeInOut}, "-=1");
+        tl.to(plane8.rotation, 0, {z: -3.145, ease: Expo.easeInOut}, "-=1");
         tl.to(plane8.scale, 1, {y: 0, ease: Expo.easeInOut}, "-=1");
 
   
